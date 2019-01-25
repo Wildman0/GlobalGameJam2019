@@ -15,11 +15,14 @@ public class PickupTool : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 1.0f))
+        if (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f))
         {
             if (hit.transform.tag == "Tool")
             {
+                Debug.Log("Tool pickup");
+
                 toolInHand.toolType = hit.transform.gameObject.GetComponent<Tool>().toolType;
+                toolInHand.currentToolGameObject = hit.transform.gameObject;
             }
         }
     }

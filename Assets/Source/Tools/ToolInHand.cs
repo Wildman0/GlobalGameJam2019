@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum ToolType
 {
+    None,
     Wrench,
     Paintbrush
 }
@@ -11,4 +12,11 @@ public enum ToolType
 public class ToolInHand : MonoBehaviour
 {
     public ToolType toolType;
+    public GameObject currentToolGameObject;
+
+    private void Update()
+    {
+        if (currentToolGameObject)
+            currentToolGameObject.transform.position = Camera.main.transform.position + Camera.main.transform.TransformDirection(new Vector3(0.4f, -0.1f, 0.8f));
+    }
 }

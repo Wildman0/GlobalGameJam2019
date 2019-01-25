@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UseTool : MonoBehaviour
-{    
-	void Update ()
+{
+    ToolInHand toolInHand;
+
+    private void Start()
+    {
+        toolInHand = gameObject.GetComponent<ToolInHand>();
+    }
+
+    void Update ()
     {
         RaycastHit hit;
 
-        if (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 1.0f))
+        if (Input.GetMouseButtonDown(0) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f))
         {
             if (hit.transform.tag == "ToolInteractable")
             {
-                hit.transform.gameObject.SendMessage("OnToolInteract");
+                hit.transform.gameObject.SendMessage("OnToolInteract", toolInHand.toolType);
             }
         }
     }

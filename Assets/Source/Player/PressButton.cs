@@ -12,7 +12,7 @@ public class PressButton : MonoBehaviour {
         {
             if (hit.transform.tag == "Button")
             {
-                hit.transform.gameObject.GetComponent<Button>().PressButton
+                hit.transform.gameObject.GetComponent<Button>().PressButton();
             }
         }
     }

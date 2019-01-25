@@ -1,0 +1,59 @@
+Quantic Character Controller patch notes.
+Every modification since the initial release are listed in this file.
+
+======== VERSION 1.9f ========
+ - Added ability to jump multiple times while in the air.
+ - Added new script: PlayerCursorManager.
+
+======== VERSION 1.8f ========
+ - Added slope sliding to the movement.
+ - Added new script: PlayerTimeEffector.
+ - Added new passive state "IsSliding" for the slope sliding feature.
+ - Added custom AddComponent menu: Quantic Controller.
+ - Fixed editor scripts so now the selected tab will remain opened until game starts.
+ - Fixed a problem with adding required scripts automatically for the motor script.
+
+======== VERSION 1.7f ========
+ - Added new script: PlayerStaminaBehavior.
+ - Fixed editor scripts so that you can now undo changes in them (finally).
+
+======== VERSION 1.6f ========
+ - Added new head bobbing mechanics with more features.
+ - Added new landing head motion mechanics with more features.
+ - Added prevention of playing footsteps when moving directly to a wall.
+ - Added proper documentation.
+
+======== VERSION 1.5f ========
+ - Added ability to change the air control percentage of the character. (Experimental)
+ - Added completely new Demo scene.
+ - Added slider for air control percentage to the variable monitoring.
+ - Added slider for mouse smooth scale to the variable monitoring.
+ - Changed the layout of the constant gravity force variable in the motor script's inspector.
+ - Changed the display mode of the passive states in the motor script's inspector.
+
+======== VERSION 1.4f ========
+ - Changed the inspector of the character motor script.
+ - Changed the inspector of the camera controller script.
+
+======== VERSION 1.3f ========
+ - Added landing motion for the camera.
+ - Added landing sound mechanics.
+ - Changed the layout of the editor scripts in some places.
+ - Changed the way of updating vectors in some places of the scripts.
+
+======== VERSION 1.2f ========
+ - Added ghosting system for the spectator mode, with this you can go through walls.
+ - Added new passive state "IsGhosting", obviously for the ghosting system.
+ - Added option to switch between continuous or single jumping method.
+ - Changed the debug gravity button's functionality.
+ - Updated the "Getting Started" file, and made it easier to understand.
+
+======== VERSION 1.1f ========
+ - Added custom grounded state checking system.
+ - Added slope detection mechanics to reduce bouncing on slopes.
+ - Added completely new Demo scene.
+ - Fixed bug with constant gravity force being influenced by move smooth scale.
+ - Fixed bug with gravity visualization being shown all the time.
+ - Fixed camera head bobbing speed when crouching and running.
+ - Changed variable name "Walk Speed" to "Move Speed".
+ - Replaced "Move Direction" with "Move Velocity" in variable monitoring.

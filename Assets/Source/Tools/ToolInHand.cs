@@ -10,5 +10,5 @@ public enum ToolType
 
 public class ToolInHand : MonoBehaviour
 {
-    ToolType toolType;
+    public ToolType toolType;
 }

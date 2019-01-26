@@ -32,6 +32,7 @@ public class PickupObject : MonoBehaviour
             {
                 objectInHand = hit.transform.gameObject;
                 objectInHand.GetComponent<Rigidbody>().useGravity = false;
+                objectInHand.GetComponent<Rigidbody>().freezeRotation = true;
 
                 if (hit.transform.tag == "Tool")
                 {
@@ -51,6 +52,7 @@ public class PickupObject : MonoBehaviour
             }
 
             objectInHand.GetComponent<Rigidbody>().useGravity = true;
+            objectInHand.GetComponent<Rigidbody>().freezeRotation = false;
             objectInHand = null;
         }
     }

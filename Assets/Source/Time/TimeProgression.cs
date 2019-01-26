@@ -24,10 +24,12 @@ public class TimeProgression : MonoBehaviour {
             if (Minutes == 1440)
             {
                 Minutes = 0;
+                UpdateMinutes = 0;
             }
             else
             {
                 Minutes += 2;
+                UpdateMinutes = 0;
             }
         }
     }

@@ -27,5 +27,10 @@ public class DispenseWater : MonoBehaviour {
             Instantiate(Bottle, (Bottle.transform.position + new Vector3(0, 1, 0)), Quaternion.identity);
         }
     }
-          
+    
+    public void FixWaterDispencer ()
+    {
+        IsBroken = false;
+    }
+
 }

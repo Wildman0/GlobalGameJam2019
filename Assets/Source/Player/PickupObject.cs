@@ -63,6 +63,6 @@ public class PickupObject : MonoBehaviour
     void CarryObject()
     {
         if (objectInHand)
-            objectInHand.transform.position = Camera.main.transform.position + Camera.main.transform.TransformDirection(new Vector3(0.4f, -0.1f, 2.0f));
+            objectInHand.transform.position = Camera.main.transform.position + Camera.main.transform.TransformDirection(new Vector3(0.4f, -0.1f, 1.0f));
     }
 }

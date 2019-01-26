@@ -41,4 +41,14 @@ public class TimeProgression : MonoBehaviour {
     {
         Minutes = NewMinutes;
     }
+
+    public void AdvanceMinutes(int AddedTime)
+    {
+        Minutes += AddedTime;
+        
+        if (Minutes > 1439)
+        {
+            Minutes -= 1440;
+        }
+    }
 }

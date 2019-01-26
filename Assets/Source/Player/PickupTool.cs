@@ -13,6 +13,18 @@ public class PickupTool : MonoBehaviour
 
     void Update ()
     {
+        if (toolInHand.toolType == ToolType.None)
+        {
+            TryPickingUpTool();
+        }
+        else
+        {
+            TryDroppingTool();
+        }
+    }
+
+    void TryPickingUpTool()
+    {
         RaycastHit hit;
 
         if (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 3.0f))
@@ -23,7 +35,18 @@ public class PickupTool : MonoBehaviour
 
                 toolInHand.toolType = hit.transform.gameObject.GetComponent<Tool>().toolType;
                 toolInHand.currentToolGameObject = hit.transform.gameObject;
+                toolInHand.currentToolGameObject.GetComponent<Rigidbody>().useGravity = false;
             }
+        }
+    }
+
+    void TryDroppingTool()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            toolInHand.toolType = ToolType.None;
+            toolInHand.currentToolGameObject.GetComponent<Rigidbody>().useGravity = true;
+            toolInHand.currentToolGameObject = null;
         }
     }
 }

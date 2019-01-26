@@ -585,88 +585,20 @@ public class PlayerMotorBehavior : MonoBehaviour
 		}
 	}
 
-	private void CalculateGhostMode()
-	{
-		//If ghost mode is enabled, and currently the collision is active between the layers.
-		if(isGhosting && !Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer)) 
-		{
-			//Disable the collision between the player's layer and the selected layer.
-			Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, true);
-		}
+    private void CalculateGhostMode()
+    {
+        //If ghost mode is enabled, and currently the collision is active between the layers.
+        if (isGhosting && !Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
+        {
+            //Disable the collision between the player's layer and the selected layer.
+            Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, true);
+        }
 
-		//If ghost mode is disabled, and currently the collision is disabled between the layers.
-		if(!isGhosting && Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer)) 
-		{
-			//Enable the collision between the player's layer and the selected layer.
-			Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, false);
-		}
-	}
-
-	private void OnGUI()
-	{
-		//Rendering the debug if its needed.
-		if(!monitorVariables) return;
-
-		//Creating the outline of the debug.
-		GUI.Box(new Rect(15, 15, 310, 130), "");
-		GUI.Box(new Rect(15, 150, 310, 209), "");
-
-		//Enable gravity button.
-		if(isZeroGravity)
-		{
-			if(GUI.Button(new Rect(15, 364, 310, 25), "Enable Gravity"))
-			{
-				//Update the gravity using the built-in function.
-				UpdateGravity(1f, moveSmoothScale, 0f);
-			}
-		}
-
-		//Disable gravity button.
-		else if(!isZeroGravity)
-		{
-			if(GUI.Button(new Rect(15, 364, 310, 25), "Disable Gravity"))
-			{
-				//Update the gravity using the built-in function.
-				UpdateGravity(0f, moveSmoothScale, 1.2f);
-			}
-		}
-
-		//Creating an area for GUILayout to display debug information.
-		GUILayout.BeginArea(new Rect(20, 20, 300, Screen.height));
-		GUILayout.BeginVertical();
-
-		//Move velocity.
-		GUILayout.Label("Move Velocity " + controller.velocity);
-
-		//Move smooth scale.
-		GUILayout.Label("Move Smooth Scale (" + Mathf.RoundToInt(moveSmoothScale * 100) + "%)");
-		moveSmoothScale = GUI.HorizontalSlider(new Rect(175, 30, 125, 10), moveSmoothScale, 0, 1);
-
-		//Gravity scale.
-		GUILayout.Label("Gravity Scale (" + Mathf.RoundToInt(gravityScale * 100) + "%)");
-		gravityScale = GUI.HorizontalSlider(new Rect(175, 55, 125, 10), gravityScale, 0, 1);
-
-		//Air control percent.
-		GUILayout.Label("Air Control Percent (" + Mathf.RoundToInt(airControlPercent * 100) + "%)");
-		airControlPercent = GUI.HorizontalSlider(new Rect(175, 80, 125, 10), airControlPercent, 0, 1);
-
-		//Mouse smooth scale.
-		GUILayout.Label("Mouse Smooth Scale (" + Mathf.RoundToInt(cam.mouseSmoothScale * 100) + "%)");
-		cam.mouseSmoothScale = GUI.HorizontalSlider(new Rect(175, 105, 125, 10), cam.mouseSmoothScale, 0, 1);
-
-		//Passive states.
-		GUILayout.Space(11);
-		GUILayout.Toggle(isGhosting, " Is Ghosting");
-		GUILayout.Toggle(isZeroGravity, " Is Zero Gravity");
-		GUILayout.Toggle(isGrounded, " Is Grounded");
-		GUILayout.Toggle(isSliding, " Is Sliding");
-		GUILayout.Toggle(isMoving, " Is Moving");
-		GUILayout.Toggle(isRunning, " Is Running");
-		GUILayout.Toggle(isCrouching, " Is Crouching");
-		GUILayout.Toggle(isAscending, " Is Ascending");
-		GUILayout.Toggle(isDescending, " Is Descending");
-
-		GUILayout.EndVertical();
-		GUILayout.EndArea();
-	}
+        //If ghost mode is disabled, and currently the collision is disabled between the layers.
+        if (!isGhosting && Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
+        {
+            //Enable the collision between the player's layer and the selected layer.
+            Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, false);
+        }
+    }
 }

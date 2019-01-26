@@ -8,32 +8,19 @@ public class ToggleLights : MonoBehaviour {
 
     public void OnButtonPress()
     {
-        if (lights[0].intensity == 1)
-        {
-            for (int i = 0; i < lights.Length; i++ )
-            {
-                lights[i].intensity = 0;
-            }
-        }else
+        if (lights[0].intensity != 0)
         {
             for (int i = 0; i < lights.Length; i++)
             {
-                lights[i].intensity = 1;
+                lights[i].intensity = 0;
             }
         }
-
-        
+        else
+        {
+            for (int i = 0; i < lights.Length; i++)
+            {
+                lights[i].intensity = 0.6f;
+            }
+        }
     }
-
-    // Use this for initialization
-    void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 }

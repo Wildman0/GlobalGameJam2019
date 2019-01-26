@@ -202,11 +202,14 @@ public class PlayerMotorBehavior : MonoBehaviour
 
 	private void Update()
 	{
-		//Running different methods every frame.
-		RefreshStates();
-		PlayFootsteps();
-		CalculateGhostMode();
-		CalculateMovement();
+        if (!Input.GetMouseButton(1))
+        {
+            //Running different methods every frame.
+            RefreshStates();
+            PlayFootsteps();
+            CalculateGhostMode();
+            CalculateMovement();
+        }
 	}
 
 	public void UpdateGravity(float newGravityScale, float newMoveSmoothScale, float additionalGravityForce)
@@ -221,181 +224,188 @@ public class PlayerMotorBehavior : MonoBehaviour
 		velocityY += additionalGravityForce;
 	}
 
-	private void CalculateMovement()
-	{
-		//Store the horizontal and vertical input.
-		Vector2 inputDir;
+    private void CalculateMovement()
+    {
+        if (!Input.GetMouseButton(1))
+        {
+            //Store the horizontal and vertical input.
+            Vector2 inputDir;
 
-		//Check if the character is sliding and get the input.
-		inputDir = isSliding ? Vector2.zero : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+            //Check if the character is sliding and get the input.
+            inputDir = isSliding ? Vector2.zero : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
-		//Adjusting the movement speed.
-		if(canMove)
-		{
-			if(isRunning)
-			{
-				//Running.
-				targetSpeed.x = runSpeed * inputDir.x;
-				targetSpeed.y = runSpeed * inputDir.y;
-				footstepMagnitude = runSpeed;
-			}
+            //Adjusting the movement speed.
+            if (canMove)
+            {
+                if (isRunning)
+                {
+                    //Running.
+                    targetSpeed.x = runSpeed * inputDir.x;
+                    targetSpeed.y = runSpeed * inputDir.y;
+                    footstepMagnitude = runSpeed;
+                }
 
-			if(isCrouching)
-			{
-				//Crouching.
-				targetSpeed.x = crouchSpeed * inputDir.x;
-				targetSpeed.y = crouchSpeed * inputDir.y;
-				footstepMagnitude = crouchSpeed;
-			}
+                if (isCrouching)
+                {
+                    //Crouching.
+                    targetSpeed.x = crouchSpeed * inputDir.x;
+                    targetSpeed.y = crouchSpeed * inputDir.y;
+                    footstepMagnitude = crouchSpeed;
+                }
 
-			if(!isRunning && !isCrouching)
-			{
-				//Walking.
-				targetSpeed.x = moveSpeed * inputDir.x;
-				targetSpeed.y = moveSpeed * inputDir.y;
-				footstepMagnitude = moveSpeed;
-			}
-		}
+                if (!isRunning && !isCrouching)
+                {
+                    //Walking.
+                    targetSpeed.x = moveSpeed * inputDir.x;
+                    targetSpeed.y = moveSpeed * inputDir.y;
+                    footstepMagnitude = moveSpeed;
+                }
+            }
 
-		//We cannot move, adjust movement speed to 0.
-		else if(!canMove)
-		{
-			targetSpeed.x = 0;
-			targetSpeed.y = 0;
-		}
+            //We cannot move, adjust movement speed to 0.
+            else if (!canMove)
+            {
+                targetSpeed.x = 0;
+                targetSpeed.y = 0;
+            }
 
-		//Smooth out the movement speed.
-		currentSpeed.x = Mathf.SmoothDamp(currentSpeed.x, targetSpeed.x, ref speedSmoothVelocity.x, ControlledSmoothScale());
-		currentSpeed.y = Mathf.SmoothDamp(currentSpeed.y, targetSpeed.y, ref speedSmoothVelocity.y, ControlledSmoothScale());
+            //Smooth out the movement speed.
+            currentSpeed.x = Mathf.SmoothDamp(currentSpeed.x, targetSpeed.x, ref speedSmoothVelocity.x, ControlledSmoothScale());
+            currentSpeed.y = Mathf.SmoothDamp(currentSpeed.y, targetSpeed.y, ref speedSmoothVelocity.y, ControlledSmoothScale());
 
-		//Apply gravity.
-		velocityY += Time.deltaTime * (gravityAmount * gravityScale);
+            //Apply gravity.
+            velocityY += Time.deltaTime * (gravityAmount * gravityScale);
 
-		//Jumping mechanics.
-		if(canJump && jumpsLeft > 0 && !isZeroGravity && canMove && !isSliding)
-		{
-			//Single jumping method.
-			if(jumpMethod == JumpMethod.single && Input.GetKeyDown(KeyCode.Space))
-			{
-				//Set the velocity.
-				velocityY = jumpForce;
+            //Jumping mechanics.
+            if (canJump && jumpsLeft > 0 && !isZeroGravity && canMove && !isSliding)
+            {
+                //Single jumping method.
+                if (jumpMethod == JumpMethod.single && Input.GetKeyDown(KeyCode.Space))
+                {
+                    //Set the velocity.
+                    velocityY = jumpForce;
 
-				//Landing sound reset.
-				playedLanding = false;
+                    //Landing sound reset.
+                    playedLanding = false;
 
-				//Jump sound.
-				if(jumpSound != null)
-					GetComponent<AudioSource>().PlayOneShot(jumpSound, jumpVolume);
+                    //Jump sound.
+                    if (jumpSound != null)
+                        GetComponent<AudioSource>().PlayOneShot(jumpSound, jumpVolume);
 
-				//Update the amount of jumps left.
-				jumpsLeft--;
-			}
+                    //Update the amount of jumps left.
+                    jumpsLeft--;
+                }
 
-			//Continuous jumping method.
-			if(jumpMethod == JumpMethod.continuous)
-			{
-				if(isGrounded && Input.GetAxis ("Jump") != 0)
-				{
-					//Set the velocity.
-					velocityY = jumpForce;
+                //Continuous jumping method.
+                if (jumpMethod == JumpMethod.continuous)
+                {
+                    if (isGrounded && Input.GetAxis("Jump") != 0)
+                    {
+                        //Set the velocity.
+                        velocityY = jumpForce;
 
-					//Landing sound reset.
-					playedLanding = false;
+                        //Landing sound reset.
+                        playedLanding = false;
 
-					//Jump sound.
-					if(jumpSound != null)
-						GetComponent<AudioSource> ().PlayOneShot (jumpSound, jumpVolume);
+                        //Jump sound.
+                        if (jumpSound != null)
+                            GetComponent<AudioSource>().PlayOneShot(jumpSound, jumpVolume);
 
-					//Update the amount of jumps left.
-					jumpsLeft--;
-				}
+                        //Update the amount of jumps left.
+                        jumpsLeft--;
+                    }
 
-				else if(!isGrounded && Input.GetKeyDown (KeyCode.Space))
-				{
-					//Set the velocity.
-					velocityY = jumpForce;
+                    else if (!isGrounded && Input.GetKeyDown(KeyCode.Space))
+                    {
+                        //Set the velocity.
+                        velocityY = jumpForce;
 
-					//Landing sound reset.
-					playedLanding = false;
+                        //Landing sound reset.
+                        playedLanding = false;
 
-					//Jump sound.
-					if(jumpSound != null)
-						GetComponent<AudioSource> ().PlayOneShot (jumpSound, jumpVolume);
+                        //Jump sound.
+                        if (jumpSound != null)
+                            GetComponent<AudioSource>().PlayOneShot(jumpSound, jumpVolume);
 
-					//Update the amount of jumps left.
-					jumpsLeft--;
-				}
-			}
-		}
+                        //Update the amount of jumps left.
+                        jumpsLeft--;
+                    }
+                }
+            }
 
-		//Crouching mechanics.
-		if(canCrouch)
-		{
-			//Set the target height.
-			float targetHeight = defaultCrouchHeight;
+            //Crouching mechanics.
+            if (canCrouch)
+            {
+                //Set the target height.
+                float targetHeight = defaultCrouchHeight;
 
-			//Update the target height if needed.
-			if(isCrouching) targetHeight = crouchHeight;
+                //Update the target height if needed.
+                if (isCrouching) targetHeight = crouchHeight;
 
-			//Calculate and update the players height.
-			float lastHeight = controller.height;
-			controller.height = Mathf.SmoothDamp(controller.height, targetHeight, ref crouchSmoothVelocity, crouchSmoothScale);
+                //Calculate and update the players height.
+                float lastHeight = controller.height;
+                controller.height = Mathf.SmoothDamp(controller.height, targetHeight, ref crouchSmoothVelocity, crouchSmoothScale);
 
-			//Fix the position of the player.
-			Vector3 fixedPos = new Vector3(transform.position.x, transform.position.y + (controller.height -lastHeight) /2, transform.position.z);
-			transform.position = fixedPos;
-		}
+                //Fix the position of the player.
+                Vector3 fixedPos = new Vector3(transform.position.x, transform.position.y + (controller.height - lastHeight) / 2, transform.position.z);
+                transform.position = fixedPos;
+            }
 
-		//Standing.
-		else if(!canCrouch && controller.height != defaultCrouchHeight)
-		{
-			//Calculate and update the players height.
-			float lastHeight = controller.height;
-			controller.height = Mathf.SmoothDamp(controller.height, defaultCrouchHeight, ref crouchSmoothVelocity, crouchSmoothScale);
+            //Standing.
+            else if (!canCrouch && controller.height != defaultCrouchHeight)
+            {
+                //Calculate and update the players height.
+                float lastHeight = controller.height;
+                controller.height = Mathf.SmoothDamp(controller.height, defaultCrouchHeight, ref crouchSmoothVelocity, crouchSmoothScale);
 
-			//Fix the position of the player.
-			Vector3 fixedPos = new Vector3(transform.position.x, transform.position.y + (controller.height -lastHeight) /2, transform.position.z);
-			transform.position = fixedPos;
-		}
+                //Fix the position of the player.
+                Vector3 fixedPos = new Vector3(transform.position.x, transform.position.y + (controller.height - lastHeight) / 2, transform.position.z);
+                transform.position = fixedPos;
+            }
 
-		//Ascending and descending functionality.
-		if(isAscending) ZG_VelocityY = ascendSpeed + constantGravityForce;
-		else if(isDescending) ZG_VelocityY = -descendSpeed + constantGravityForce;
-		else ZG_VelocityY = 0 + constantGravityForce;
+            //Ascending and descending functionality.
+            if (isAscending) ZG_VelocityY = ascendSpeed + constantGravityForce;
+            else if (isDescending) ZG_VelocityY = -descendSpeed + constantGravityForce;
+            else ZG_VelocityY = 0 + constantGravityForce;
 
-		//Calculating the movement as a vector.
-		Vector3 inputVector = new Vector3(currentSpeed.x, 0, currentSpeed.y);
+            //Calculating the movement as a vector.
+            Vector3 inputVector = new Vector3(currentSpeed.x, 0, currentSpeed.y);
 
-		//Direction in zero gravity.
-		if(isZeroGravity)
-			moveDirection = cam.playerCamera.transform.TransformDirection(inputVector) + Vector3.up * velocityY;
+            //Direction in zero gravity.
+            if (isZeroGravity)
+                moveDirection = cam.playerCamera.transform.TransformDirection(inputVector) + Vector3.up * velocityY;
 
-		//Direction in gravity.
-		else if(!isZeroGravity)
-		{
-			moveDirection = transform.TransformDirection(inputVector) + Vector3.up * velocityY;
-			if(isSliding) moveDirection += new Vector3(((1f - hitNormal.y) * hitNormal.x) * slideSpeed, 0f, ((1f - hitNormal.y) * hitNormal.z) * slideSpeed);
-		}
+            //Direction in gravity.
+            else if (!isZeroGravity)
+            {
+                moveDirection = transform.TransformDirection(inputVector) + Vector3.up * velocityY;
+                if (isSliding) moveDirection += new Vector3(((1f - hitNormal.y) * hitNormal.x) * slideSpeed, 0f, ((1f - hitNormal.y) * hitNormal.z) * slideSpeed);
+            }
 
-		//Move the character.
-		controller.Move(moveDirection * Time.deltaTime);
+            //Move the character.
+            controller.Move(moveDirection * Time.deltaTime);
 
-		//Grounded check.
-		if(useSlopeDetection) isGrounded = CustomGroundState();
-		else isGrounded = controller.isGrounded;
+            //Grounded check.
+            if (useSlopeDetection) isGrounded = CustomGroundState();
+            else isGrounded = controller.isGrounded;
 
-		//Sliding check.
-		if(useSlopeSliding) isSliding = CustomSlidingState();
-		else isSliding = false;
+            //Sliding check.
+            if (useSlopeSliding) isSliding = CustomSlidingState();
+            else isSliding = false;
 
-		//Smooth out the difference between the current velocity and the target velocity.
-		if(isZeroGravity)
-			velocityY = Mathf.Lerp(velocityY, ZG_VelocityY, Time.deltaTime / moveSmoothScale);
+            //Smooth out the difference between the current velocity and the target velocity.
+            if (isZeroGravity)
+                velocityY = Mathf.Lerp(velocityY, ZG_VelocityY, Time.deltaTime / moveSmoothScale);
 
-		//Reset the velocity.
-		if(controller.isGrounded && !isZeroGravity)
-			velocityY = 0;
-	}
+            //Reset the velocity.
+            if (controller.isGrounded && !isZeroGravity)
+                velocityY = 0;
+        }
+        else
+        {
+            isMoving = false;
+        }
+    }
 
 	private void RefreshStates()
 	{
@@ -587,18 +597,18 @@ public class PlayerMotorBehavior : MonoBehaviour
 
     private void CalculateGhostMode()
     {
-        //If ghost mode is enabled, and currently the collision is active between the layers.
-        if (isGhosting && !Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
-        {
-            //Disable the collision between the player's layer and the selected layer.
-            Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, true);
-        }
+        ////If ghost mode is enabled, and currently the collision is active between the layers.
+        //if (isGhosting && !Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
+        //{
+        //    //Disable the collision between the player's layer and the selected layer.
+        //    Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, true);
+        //}
 
-        //If ghost mode is disabled, and currently the collision is disabled between the layers.
-        if (!isGhosting && Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
-        {
-            //Enable the collision between the player's layer and the selected layer.
-            Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, false);
-        }
+        ////If ghost mode is disabled, and currently the collision is disabled between the layers.
+        //if (!isGhosting && Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
+        //{
+        //    //Enable the collision between the player's layer and the selected layer.
+        //    Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, false);
+        //}
     }
 }

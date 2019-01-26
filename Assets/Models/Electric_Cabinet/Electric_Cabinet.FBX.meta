@@ -7,24 +7,39 @@ ModelImporter:
     100002: Cabinet_Locker
     100004: Cabniet_Door
     100006: //RootNode
+    100008: Electric_Cabinet_Door
+    100010: Electric_Cabinet_KeyHole
+    100012: Electric_Cabinet_Lock
     400000: Cabinet_KeyHole
     400002: Cabinet_Locker
     400004: Cabniet_Door
     400006: //RootNode
+    400008: Electric_Cabinet_Door
+    400010: Electric_Cabinet_KeyHole
+    400012: Electric_Cabinet_Lock
     2100000: 01 - Default
     2100002: 02 - Default
     2300000: Cabinet_KeyHole
     2300002: Cabinet_Locker
     2300004: Cabniet_Door
     2300006: //RootNode
+    2300008: Electric_Cabinet_Door
+    2300010: Electric_Cabinet_KeyHole
+    2300012: Electric_Cabinet_Lock
     3300000: Cabinet_KeyHole
     3300002: Cabinet_Locker
     3300004: Cabniet_Door
     3300006: //RootNode
+    3300008: Electric_Cabinet_Door
+    3300010: Electric_Cabinet_KeyHole
+    3300012: Electric_Cabinet_Lock
     4300000: Electric_Cabinet
     4300002: Cabniet_Door
     4300004: Cabinet_Locker
     4300006: Cabinet_KeyHole
+    4300008: Electric_Cabinet_KeyHole
+    4300010: Electric_Cabinet_Lock
+    4300012: Electric_Cabinet_Door
   externalObjects: {}
   materials:
     importMaterials: 1

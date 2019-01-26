@@ -32,7 +32,7 @@ public class Record : MonoBehaviour
         {
             src.volume = Mathf.Clamp(2 / (Vector3.Distance(player.transform.position, gameObject.transform.position)), 0, 1);
 
-            if (src.volume < 0.1f)
+            if (src.volume < 0.01f)
                 src.volume = 0.0f;
         }
     }

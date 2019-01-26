@@ -33,7 +33,13 @@ public class PickupObject : MonoBehaviour
                 objectInHand = hit.transform.gameObject;
                 objectInHand.GetComponent<Rigidbody>().useGravity = false;
                 objectInHand.GetComponent<Rigidbody>().freezeRotation = true;
+
                 objectInHand.gameObject.layer = 8;
+
+                foreach (Transform child in objectInHand.transform)
+                {
+                    child.gameObject.layer = 8;
+                }
 
                 if (hit.transform.tag == "Tool")
                 {
@@ -55,7 +61,14 @@ public class PickupObject : MonoBehaviour
             objectInHand.GetComponent<Rigidbody>().useGravity = true;
             objectInHand.GetComponent<Rigidbody>().freezeRotation = false;
             objectInHand.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
             objectInHand.gameObject.layer = 0;
+
+            foreach (Transform child in objectInHand.transform)
+            {
+                child.gameObject.layer = 0;
+            }
+
             objectInHand = null;
         }
     }

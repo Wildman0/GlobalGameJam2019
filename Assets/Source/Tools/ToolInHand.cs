@@ -12,11 +12,15 @@ public enum ToolType
 public class ToolInHand : MonoBehaviour
 {
     public ToolType toolType;
-    public GameObject currentToolGameObject;
-
-    private void Update()
+    Color paintbrushColor = Color.white;
+    
+    public void SetPaintbrushColor(Color color)
     {
-        if (currentToolGameObject)
-            currentToolGameObject.transform.position = Camera.main.transform.position + Camera.main.transform.TransformDirection(new Vector3(0.4f, -0.1f, 1.0f));
+        paintbrushColor = color;
+    }
+
+    public Color GetPaintbrushColor()
+    {
+        return paintbrushColor;
     }
 }

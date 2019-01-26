@@ -1,93 +1,14 @@
 fileFormatVersion: 2
-guid: 0dde44711702d71488bacf60f6387cab
+guid: 16bacfe3b207fd74bb1fde5490084326
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Hob
-    100004: Hob 1
-    100006: Hob 2
-    100008: Hob 3
-    100010: Hob 4
-    100012: Hob 5
-    100014: Hob 6
-    100016: Hob 7
-    100018: Kitchen_Cupboard_Door
-    100020: Kitchen_Cupboard_Door001
-    100022: Kitchen_Cupboard_Door002
-    100024: Kitchen_Cupboard_Door003
-    100026: Kitchen_Cupboard_Door004
-    100028: Tap
-    100030: Tap_Button
     400000: //RootNode
-    400002: Hob
-    400004: Hob 1
-    400006: Hob 2
-    400008: Hob 3
-    400010: Hob 4
-    400012: Hob 5
-    400014: Hob 6
-    400016: Hob 7
-    400018: Kitchen_Cupboard_Door
-    400020: Kitchen_Cupboard_Door001
-    400022: Kitchen_Cupboard_Door002
-    400024: Kitchen_Cupboard_Door003
-    400026: Kitchen_Cupboard_Door004
-    400028: Tap
-    400030: Tap_Button
-    2100000: No Name
-    2100002: 03 - Default
-    2100004: 02 - Default
-    2100006: 01 - Default
+    2100000: 02 - Default
     2300000: //RootNode
-    2300002: Hob
-    2300004: Hob 1
-    2300006: Hob 2
-    2300008: Hob 3
-    2300010: Hob 4
-    2300012: Hob 5
-    2300014: Hob 6
-    2300016: Hob 7
-    2300018: Kitchen_Cupboard_Door
-    2300020: Kitchen_Cupboard_Door001
-    2300022: Kitchen_Cupboard_Door002
-    2300024: Kitchen_Cupboard_Door003
-    2300026: Kitchen_Cupboard_Door004
-    2300028: Tap
-    2300030: Tap_Button
     3300000: //RootNode
-    3300002: Hob
-    3300004: Hob 1
-    3300006: Hob 2
-    3300008: Hob 3
-    3300010: Hob 4
-    3300012: Hob 5
-    3300014: Hob 6
-    3300016: Hob 7
-    3300018: Kitchen_Cupboard_Door
-    3300020: Kitchen_Cupboard_Door001
-    3300022: Kitchen_Cupboard_Door002
-    3300024: Kitchen_Cupboard_Door003
-    3300026: Kitchen_Cupboard_Door004
-    3300028: Tap
-    3300030: Tap_Button
-    4300000: Box001
-    4300002: Kitchen_Counter
-    4300004: Tap_Button
-    4300006: Tap
-    4300008: Kitchen_Cupboard_Door
-    4300010: Kitchen_Cupboard_Door001
-    4300012: Kitchen_Cupboard_Door002
-    4300014: Kitchen_Cupboard_Door003
-    4300016: Kitchen_Cupboard_Door004
-    4300018: Hob
-    4300020: Hob
-    4300022: Hob
-    4300024: Hob
-    4300026: Hob
-    4300028: Hob
-    4300030: Hob
-    4300032: Hob
+    4300000: Spatula
   externalObjects: {}
   materials:
     importMaterials: 1

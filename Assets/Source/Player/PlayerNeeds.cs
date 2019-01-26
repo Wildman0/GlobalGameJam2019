@@ -39,4 +39,34 @@ public class PlayerNeeds : MonoBehaviour {
 
         PrevTime = CurrectTime;
     }
+
+    public void IncreseHunger (int inc)
+    {
+        Hunger += inc;
+        
+        if (Hunger > 100)
+        {
+            Hunger = 100;
+        }
+    }
+
+    public void IncreseThirst(int inc)
+    {
+        Thirst += inc;
+
+        if (Thirst > 100)
+        {
+            Thirst = 100;
+        }
+    }
+
+    public void IncreseSleep(int inc)
+    {
+        Sleep += inc;
+
+        if (Sleep > 100)
+        {
+            Sleep = 100;
+        }
+    }
 }

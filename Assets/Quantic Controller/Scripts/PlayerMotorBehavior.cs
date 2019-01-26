@@ -597,18 +597,18 @@ public class PlayerMotorBehavior : MonoBehaviour
 
     private void CalculateGhostMode()
     {
-        //If ghost mode is enabled, and currently the collision is active between the layers.
-        if (isGhosting && !Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
-        {
-            //Disable the collision between the player's layer and the selected layer.
-            Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, true);
-        }
+        ////If ghost mode is enabled, and currently the collision is active between the layers.
+        //if (isGhosting && !Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
+        //{
+        //    //Disable the collision between the player's layer and the selected layer.
+        //    Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, true);
+        //}
 
-        //If ghost mode is disabled, and currently the collision is disabled between the layers.
-        if (!isGhosting && Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
-        {
-            //Enable the collision between the player's layer and the selected layer.
-            Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, false);
-        }
+        ////If ghost mode is disabled, and currently the collision is disabled between the layers.
+        //if (!isGhosting && Physics.GetIgnoreLayerCollision(gameObject.layer, ignoredLayer))
+        //{
+        //    //Enable the collision between the player's layer and the selected layer.
+        //    Physics.IgnoreLayerCollision(gameObject.layer, ignoredLayer, false);
+        //}
     }
 }

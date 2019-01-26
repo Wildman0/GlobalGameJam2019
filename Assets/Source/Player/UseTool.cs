@@ -15,11 +15,30 @@ public class UseTool : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Input.GetMouseButtonDown(0) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f))
+        if (toolInHand.toolType == ToolType.Wrench)
         {
-            if (hit.transform.tag == "ToolInteractable")
+            if (Input.GetMouseButtonDown(0) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f))
             {
-                hit.transform.gameObject.SendMessage("OnToolInteract", toolInHand.toolType);
+                if (hit.transform.tag == "ToolInteractable")
+                {
+                    hit.transform.gameObject.SendMessage("OnToolInteract", toolInHand.toolType);
+                }
+            }
+        }
+        else if (toolInHand.toolType == ToolType.Paintbrush)
+        {
+            if (Input.GetMouseButtonDown(0) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f))
+            {
+                if (hit.transform.tag == "Paintable")
+                {
+                    hit.transform.gameObject.GetComponent<MeshRenderer>().material.color = toolInHand.GetPaintbrushColor();
+                    Debug.Log("Paint");
+                }
+                else if (hit.transform.tag == "PaintBucket")
+                {
+                    toolInHand.SetPaintbrushColor(hit.transform.gameObject.GetComponent<PaintBucket>().color);
+                    Debug.Log("SetPaint");
+                }
             }
         }
     }

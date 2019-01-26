@@ -19,6 +19,12 @@ ModelImporter:
     100026: Kitchen_Cupboard_Door004
     100028: Tap
     100030: Tap_Button
+    100032: Box001
+    100034: Box002
+    100036: Door_Handle
+    100038: Door_Handle002
+    100040: Door_Handle003
+    100042: Door_Handle004
     400000: //RootNode
     400002: Hob
     400004: Hob 1
@@ -35,6 +41,12 @@ ModelImporter:
     400026: Kitchen_Cupboard_Door004
     400028: Tap
     400030: Tap_Button
+    400032: Box001
+    400034: Box002
+    400036: Door_Handle
+    400038: Door_Handle002
+    400040: Door_Handle003
+    400042: Door_Handle004
     2100000: No Name
     2100002: 03 - Default
     2100004: 02 - Default
@@ -55,6 +67,12 @@ ModelImporter:
     2300026: Kitchen_Cupboard_Door004
     2300028: Tap
     2300030: Tap_Button
+    2300032: Box001
+    2300034: Box002
+    2300036: Door_Handle
+    2300038: Door_Handle002
+    2300040: Door_Handle003
+    2300042: Door_Handle004
     3300000: //RootNode
     3300002: Hob
     3300004: Hob 1
@@ -71,6 +89,12 @@ ModelImporter:
     3300026: Kitchen_Cupboard_Door004
     3300028: Tap
     3300030: Tap_Button
+    3300032: Box001
+    3300034: Box002
+    3300036: Door_Handle
+    3300038: Door_Handle002
+    3300040: Door_Handle003
+    3300042: Door_Handle004
     4300000: Box001
     4300002: Kitchen_Counter
     4300004: Tap_Button
@@ -88,6 +112,11 @@ ModelImporter:
     4300028: Hob
     4300030: Hob
     4300032: Hob
+    4300034: Door_Handle
+    4300036: Door_Handle002
+    4300038: Door_Handle003
+    4300040: Door_Handle004
+    4300042: Box002
   externalObjects: {}
   materials:
     importMaterials: 1

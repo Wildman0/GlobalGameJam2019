@@ -8,7 +8,7 @@ public class PressButton : MonoBehaviour {
     {
         RaycastHit hit;
 
-        if (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 1.0f))
+        if (Input.GetMouseButtonDown(0) && Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.0f))
         {
             if (hit.transform.tag == "Button")
             {

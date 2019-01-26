@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ToolInteractionTest : MonoBehaviour {
 
+    [SerializeField] ToolType toolType = ToolType.Wrench;
+
 	public void OnToolInteract(ToolType toolType)
     {
-        Debug.Log(toolType);
+        if (toolType == this.toolType)
+        {
+            Debug.Log("Correct tool (Wrench)!");
+        }
     }
 }

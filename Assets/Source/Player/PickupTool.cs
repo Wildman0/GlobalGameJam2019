@@ -5,9 +5,11 @@ using UnityEngine;
 public class PickupTool : MonoBehaviour
 {
     ToolInHand toolInHand;
+    PickupObject pickupObject;
 
     private void Start()
     {
+        pickupObject = gameObject.GetComponent<PickupObject>();
         toolInHand = gameObject.GetComponent<ToolInHand>();
     }
 
@@ -34,8 +36,8 @@ public class PickupTool : MonoBehaviour
                 Debug.Log("Tool pickup");
 
                 toolInHand.toolType = hit.transform.gameObject.GetComponent<Tool>().toolType;
-                toolInHand.currentToolGameObject = hit.transform.gameObject;
-                toolInHand.currentToolGameObject.GetComponent<Rigidbody>().useGravity = false;
+                pickupObject.objectInHand = hit.transform.gameObject;
+                pickupObject.objectInHand.GetComponent<Rigidbody>().useGravity = false;
             }
         }
     }
@@ -45,8 +47,8 @@ public class PickupTool : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             toolInHand.toolType = ToolType.None;
-            toolInHand.currentToolGameObject.GetComponent<Rigidbody>().useGravity = true;
-            toolInHand.currentToolGameObject = null;
+            pickupObject.objectInHand.GetComponent<Rigidbody>().useGravity = true;
+            pickupObject.objectInHand = null;
         }
     }
 }

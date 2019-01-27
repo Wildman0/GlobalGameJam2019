@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FixRadiator : MonoBehaviour {
+public class FixRadiator : MonoBehaviour
+{
+    [SerializeField] GameObject radiator;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void OnToolInteract(ToolType toolType)
+    {
+        if (toolType == ToolType.Wrench)
+        {
+            radiator.GetComponent<Radiator>().FixRadiator();
+        }
+    }
 }

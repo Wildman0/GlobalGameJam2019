@@ -5,6 +5,8 @@ using UnityEngine;
 public class PickupObject : MonoBehaviour
 {
     public GameObject objectInHand;
+    [SerializeField] private AudioClip Pickup;
+
     ToolInHand toolInHand;
 
     private void Start()
@@ -33,6 +35,7 @@ public class PickupObject : MonoBehaviour
                 objectInHand = hit.transform.gameObject;
                 objectInHand.GetComponent<Rigidbody>().useGravity = false;
                 objectInHand.GetComponent<Rigidbody>().freezeRotation = true;
+                gameObject.GetComponent<AudioSource>().PlayOneShot(Pickup);
 
                 objectInHand.gameObject.layer = 8;
 

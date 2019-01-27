@@ -5,6 +5,7 @@ using UnityEngine;
 public class ToggleLights : MonoBehaviour {
 
     [SerializeField] private Light[] lights = new Light[0];
+    [SerializeField] private float intensity = 0.6f;
 
     public void OnButtonPress()
     {
@@ -19,7 +20,7 @@ public class ToggleLights : MonoBehaviour {
         {
             for (int i = 0; i < lights.Length; i++)
             {
-                lights[i].intensity = 0.6f;
+                lights[i].intensity = intensity;
             }
         }
     }

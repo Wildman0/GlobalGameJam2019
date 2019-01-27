@@ -13,6 +13,11 @@ public class PressButton : MonoBehaviour {
             if (hit.transform.tag == "Button")
             {
                 hit.transform.gameObject.GetComponent<Button>().PressButton();
+
+                if (hit.transform.gameObject.GetComponent<Button>().clip)
+                {
+                    gameObject.GetComponent<AudioSource>().PlayOneShot(hit.transform.gameObject.GetComponent<Button>().clip);
+                }
             }
         }
     }

@@ -42,32 +42,50 @@ namespace cakeslice
         [HideInInspector]
         public Material[] originalMaterials;
 
+        public Transform playerObj;
+        public float distance;
+
         private void Awake()
         {
             Renderer = GetComponent<Renderer>();
+
+            playerObj = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        }
+
+        private void Update()
+        {
+            distance = Vector3.Distance(transform.position, playerObj.transform.position);
+            OnEnable();
+            OnDisable();
         }
 
         void OnEnable()
         {
-			IEnumerable<OutlineEffect> effects = Camera.allCameras.AsEnumerable()
-				.Select(c => c.GetComponent<OutlineEffect>())
-				.Where(e => e != null);
-
-			foreach (OutlineEffect effect in effects)
+            if (distance <= 10)
             {
-                effect.AddOutline(this);
+                IEnumerable<OutlineEffect> effects = Camera.allCameras.AsEnumerable()
+                    .Select(c => c.GetComponent<OutlineEffect>())
+                    .Where(e => e != null);
+
+                foreach (OutlineEffect effect in effects)
+                {
+                    effect.AddOutline(this);
+                }
             }
         }
 
         void OnDisable()
         {
-			IEnumerable<OutlineEffect> effects = Camera.allCameras.AsEnumerable()
-				.Select(c => c.GetComponent<OutlineEffect>())
-				.Where(e => e != null);
-
-			foreach (OutlineEffect effect in effects)
+            if (distance >= 10)
             {
-                effect.RemoveOutline(this);
+                IEnumerable<OutlineEffect> effects = Camera.allCameras.AsEnumerable()
+                .Select(c => c.GetComponent<OutlineEffect>())
+                .Where(e => e != null);
+
+                foreach (OutlineEffect effect in effects)
+                {
+                    effect.RemoveOutline(this);
+                }
             }
         }
     }

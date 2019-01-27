@@ -11,6 +11,7 @@ ModelImporter:
     100010: HarddriveTray2
     100012: HarddriveTray_Button1
     100014: Power_Button
+    100016: Computer
     400000: //RootNode
     400002: DiscTray
     400004: DiscTray_Button
@@ -19,6 +20,7 @@ ModelImporter:
     400010: HarddriveTray2
     400012: HarddriveTray_Button1
     400014: Power_Button
+    400016: Computer
     2100000: 21 - Default
     2100002: 20 - Default
     2100004: 19 - Default
@@ -35,6 +37,7 @@ ModelImporter:
     2300010: HarddriveTray2
     2300012: HarddriveTray_Button1
     2300014: Power_Button
+    2300016: Computer
     3300000: //RootNode
     3300002: DiscTray
     3300004: DiscTray_Button
@@ -43,6 +46,7 @@ ModelImporter:
     3300010: HarddriveTray2
     3300012: HarddriveTray_Button1
     3300014: Power_Button
+    3300016: Computer
     4300000: Computer
     4300002: Power_Button
     4300004: Harddrive_Button2
@@ -82,7 +86,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.7
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
